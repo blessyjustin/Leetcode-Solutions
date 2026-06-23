@@ -6,5 +6,6 @@ class Solution:
             if currentSum<0:
                 currentSum=0
             currentSum+=nums[i]
-            maxSum=max(currentSum,maxSum)
+            if currentSum>maxSum:
+                maxSum=currentSum
         return maxSum
