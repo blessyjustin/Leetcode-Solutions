@@ -4,11 +4,11 @@ class Solution:
         left=0
         right=len(height)-1
         while(left<right):
+            area=min(height[left],height[right])*(right-left)
+            maxi=max(maxi,area)
             if(height[left]<=height[right]):
-                area=height[left]*(right-left)
                 left+=1
             else:
-                area=height[right]*(right-left)
                 right-=1
-            maxi=max(maxi,area)
+            
         return maxi
