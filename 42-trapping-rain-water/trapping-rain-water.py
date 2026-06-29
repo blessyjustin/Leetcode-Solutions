@@ -4,7 +4,7 @@ class Solution:
         maxLeft, maxRight= height[left], height[right]
         result=0
         while(left<right):
-            if(maxLeft<maxRight):
+            if(maxLeft<=maxRight):
                 left+=1
                 maxLeft=max(maxLeft,height[left])
                 result+=maxLeft-height[left]
