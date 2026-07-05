@@ -19,4 +19,3 @@ class Solution:
                 nums[index]=temp
                 break
         nums[index+1:]=nums[index+1:][::-1]
-        
