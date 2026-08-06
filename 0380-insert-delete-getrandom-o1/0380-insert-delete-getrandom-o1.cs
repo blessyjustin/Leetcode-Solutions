@@ -1,35 +1,44 @@
 public class RandomizedSet {
 
     List<int> l;
+    Dictionary <int,int> dict;
     Random rand;
     public RandomizedSet() {
         l=new List<int>();
+        dict=new Dictionary<int,int>();
         rand=new Random();
     }
     
-    public bool Insert(int val) {
-        if(!l.Contains(val))
+    public bool Insert(int val) 
+    {
+        if(dict.ContainsKey(val))
         {
-            l.Add(val);
-            return true;
-        }
-        else{
             return false;
         }
+        l.Add(val);
+        dict[val]=l.Count-1;
+        return true;
+       
     }
     
-    public bool Remove(int val) {
-        if(l.Contains(val))
+    public bool Remove(int val) 
+    {
+        if(!dict.ContainsKey(val))
         {
-            l.Remove(val);
-            return true;
-        }
-        else{
             return false;
         }
+        int i=dict[val];
+        int lastele=l[l.Count-1];
+        l[i]=lastele;
+        dict[lastele]=i;
+        l.RemoveAt(l.Count-1);
+        dict.Remove(val);
+        return true;
+        
     }
     
-    public int GetRandom() {
+    public int GetRandom() 
+    {
         int i=rand.Next(l.Count);
         return l[i];
     }
