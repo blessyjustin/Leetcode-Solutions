@@ -1,19 +1,20 @@
 public class Solution {
     public bool IsPalindrome(string s) {
-        s=s.ToLower();
-        string st="";
-        foreach(char ch in s)
-        {
-            if(char.IsLetterOrDigit(ch))
-            {
-                st+=ch;
-            }
-        }
         int left=0;
-        int right=st.Length-1;
+        int right=s.Length-1;
         while(left<right)
         {
-            if(st[left]!=st[right]){
+            if(!char.IsLetterOrDigit(s[left]))
+            {
+                left++;
+                continue;
+            }
+            if(!char.IsLetterOrDigit(s[right]))
+            {
+                right--;
+                continue;
+            }
+            if(char.ToLowerInvariant(s[left])!=char.ToLowerInvariant(s[right])){
                 return false;
             }
             left++;
