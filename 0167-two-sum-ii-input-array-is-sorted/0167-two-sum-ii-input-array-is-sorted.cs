@@ -1,25 +1,22 @@
 public class Solution {
     public int[] TwoSum(int[] numbers, int target) {
         int i=0;
-        int j=i+1;
-        int diff=target-numbers[i];
+        int j=numbers.Length-1;
         while(i<j)
         {
-            if(j>numbers.Length-1)
+            if(numbers[i]+numbers[j]>target)
+            {
+                j--;
+            }
+            else if(numbers[i]+numbers[j]<target)
             {
                 i++;
-                j=i+1;
-                diff=target-numbers[i];
-            }
-            if(numbers[j]!=diff)
-            {
-                j++;
             }
             else
             {
-                break;
+                return [i+1,j+1];
             }
         }
-        return [i+1,j+1];
+        return [];
     }
 }
