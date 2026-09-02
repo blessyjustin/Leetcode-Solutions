@@ -8,7 +8,7 @@ public class Solution {
         {
             area=Math.Min(height[left],height[right])*(right-left);
             maxarea=Math.Max(maxarea,area);
-            if(height[left]<=height[right])
+            if(height[left]<height[right])
             {
                 left++;
             }
