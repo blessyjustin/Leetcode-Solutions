@@ -2,33 +2,58 @@ public class Solution {
     public void SetZeroes(int[][] matrix) {
         int m=matrix.Length;
         int n=matrix[0].Length;
-        HashSet<int> row=new HashSet<int>();
-        HashSet<int> col=new HashSet<int>();
+        bool frz=false;
+        bool fcz=false;
+        for(int i=0;i<n;i++)
+        {
+            if(matrix[0][i]==0)
+            {
+                frz=true;
+            }
+        }
         for(int i=0;i<m;i++)
         {
-            for(int j=0;j<n;j++)
+            if(matrix[i][0]==0)
+            {
+                fcz=true;
+            }
+        }
+        for(int i=1;i<m;i++)
+        {
+            for(int j=1;j<n;j++)
             {
                 if(matrix[i][j]==0)
                 {
-                    row.Add(i);
-                    col.Add(j);
+                    matrix[0][j]=0;
+                    matrix[i][0]=0;
                 }
             }
         }
-        foreach(int r in row)
+        for(int i=1;i<m;i++)
+        {
+            for(int j=1;j<n;j++)
+            {
+                if(matrix[0][j]==0||matrix[i][0]==0)
+                {
+                    matrix[i][j]=0;
+                }     
+            }
+        }
+        if(frz==true)
         {
             for(int i=0;i<n;i++)
             {
-                matrix[r][i]=0;
+                matrix[0][i]=0;
             }
         }
-        foreach(int c in col)
+        if(fcz==true)
         {
             for(int i=0;i<m;i++)
             {
-                matrix[i][c]=0;
+                matrix[i][0]=0;
             }
         }
 
+        
     }
 }
